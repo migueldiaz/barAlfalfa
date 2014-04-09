@@ -14,9 +14,9 @@
     <% @usuarios.each do |usuario| %>
       <tr>
         <td><%= usuario.nombre %></td>
-        <td><%= link_to 'Ver', usuario %></td>
-        <td><%= link_to 'Editar', edit_usuario_path(usuario) %></td>
-        <td><%= link_to 'Borrar', usuario, method: :delete, data: { confirm: 'Está seguro?' } %></td>
+        <td><%= link_to 'Ver', usuario,:class=>'btn' %></td>
+        <td><%= link_to 'Editar', edit_usuario_path(usuario),:class=>'btn' %></td>
+        <td><%= link_to 'Borrar', usuario, method: :delete,:class=>'btn', data: { confirm: 'Está seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>

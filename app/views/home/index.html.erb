@@ -33,4 +33,37 @@
     <figcaption>Recordatorios</figcaption>
 </figure>
 </div>
+<hr/>
+<div>
+<h3>Ultimos recordatorios:</h3>
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Hecho</th>
+      <th>Turno</th>
+      <th>Item</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
+  <tbody>
+    <% @todos.each do |todo| %>
+      <tr>
+        <td><%if todo.hecho=='false'%>
+      PENDIENTE
+    <%else%>
+    Sí
+    <%end%></td>
+        <td><%= todo.turno %></td>
+        <td><%= todo.item %></td>
+        <td><%= link_to 'Ver', todo ,:class=>'btn' %></td>
+        <td><%= link_to 'Editar', edit_todo_path(todo),:class=>'btn'  %></td>
+        <td><%= link_to 'Borrar', todo, method: :delete,:class=>'btn' , data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p>Sólo se muestran los últimos 10 recordatorios para verlos todos acceder a recordatorios...</p>
+</div>
