@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<table class='table table striped'>
+<tr>
+	<td> <strong>Hecho:</strong>
+  		<%if @todo.hecho=='false'%>
+			PENDIENTE
+		<%else%>
+		Sí
+		<%end%>
+  	</td>
+	<td> <strong>Turno:</strong>
+  <%= @todo.turno %></td>
+	<td> <strong>Item:</strong>
+  <%= @todo.item %></td>
+</tr>
+<table>
+
+<hr/>
+<%= link_to 'Editar', edit_todo_path(@todo),:class=>'btn' %> |
+<%= link_to 'Volver', todos_path,:class=>'btn' %>

@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  turno: MyString
+  usuario: MyString
+  doscientos: 9.99
+  cien: 9.99
+  cincuenta: 9.99
+  veinte: 9.99
+  diez: 9.99
+  cinco: 9.99
+  dos: 9.99
+  uno: 9.99
+  medio: 9.99
+  veintecentimos: 9.99
+  diezcentimos: 9.99
+  cincocentimos: 9.99
+  totalCalculo: MyString
+  totalContado: MyString
+  desvio: MyString
+
+two:
+  turno: MyString
+  usuario: MyString
+  doscientos: 9.99
+  cien: 9.99
+  cincuenta: 9.99
+  veinte: 9.99
+  diez: 9.99
+  cinco: 9.99
+  dos: 9.99
+  uno: 9.99
+  medio: 9.99
+  veintecentimos: 9.99
+  diezcentimos: 9.99
+  cincocentimos: 9.99
+  totalCalculo: MyString
+  totalContado: MyString
+  desvio: MyString

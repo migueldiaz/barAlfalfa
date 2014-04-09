@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+
+<table class='table table-striped'>
+<tr>
+<td>
+  <strong>Usuario:</strong>
+  <%= @notum.usuario %>
+  </td>
+</tr>
+<tr>
+<td>Fecha: <%=@notum.created_at%></td>
+</tr>
+<tr>
+  <td><strong>Mensaje:</strong>
+  <%= @notum.mensaje %></td>
+</tr>
+</table>
+<%= link_to 'Editar mensaje', edit_notum_path(@notum) ,:class=>'btn'%> |
+<%= link_to 'Volver a lista de mensajes', nota_path ,:class=>'btn'%>

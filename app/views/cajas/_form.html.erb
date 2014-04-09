@@ -1,0 +1,146 @@
+
+
+<%= form_for(@caja) do |f| %>
+    
+  <% if @caja.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@caja.errors.count, "error") %> impidieron guardar la caja:</h2>
+
+      <ul>
+      <% @caja.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <table>
+    <tr><td>
+    <%= f.label :turno %><br>
+    <%= f.select :turno,['Mañana','Tarde'],:selected=>'Mañana' %>
+  </td>
+  <td>&nbsp;</td><td>&nbsp;</td>
+  <td>
+    <%= f.label :usuario %><br>
+    <%=f.select(:usuario, Usuario.all.collect {|p| [ p.nombre] }, { include_blank: true })%>
+    <td> </tr>
+    </table>
+    <!---Las entradas en una tabla-->
+    <hr/>
+    <table border="1">
+  <thead>
+    <tr>
+      <th colspan="2">Billetes</th>
+      <th colspan="2">Monedas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>200€</th>
+      <td><%= f.text_field :doscientos,:onchange => 'UpdateTotal()' %></td>
+      <th>2€</th>
+      <td><%= f.text_field :dos,:onchange => 'UpdateTotal()' %></td>
+    </tr>
+     <tr>
+      <th>100€</th>
+      <td><%= f.text_field :cien,:onchange => 'UpdateTotal()' %></td>
+      <th>1€</th>
+      <td><%= f.text_field :uno,:onchange => 'UpdateTotal()' %></td>
+    </tr>
+     <tr>
+      <th>50€</th>
+      <td><%= f.text_field :cincuenta,:onchange => 'UpdateTotal()' %></td>
+      <th>50 cent.</th>
+      <td><%= f.text_field :medio,:onchange => 'UpdateTotal()'%></td>
+    </tr>
+     <tr>
+      <th>20€</th>
+      <td><%= f.text_field :veinte,:onchange => 'UpdateTotal()' %></td>
+      <th>20 cent.</th>
+      <td><%= f.text_field :veintecentimos,:onchange => 'UpdateTotal()' %></td>
+    </tr>
+    <tr>
+      <th>10€</th>
+       <td><%= f.text_field :diez,:onchange => 'UpdateTotal()' %></td>
+      
+      <th>10 cent.</th>
+      <td><%= f.text_field :diezcentimos,:onchange => 'UpdateTotal()' %></td>
+    </tr>
+     <tr>
+      <th>5€</th>
+      <td><%= f.text_field :cinco,:onchange => 'UpdateTotal()' %></td>
+      <th>5 cent.</th>
+      <td><%= f.text_field :cincocentimos,:onchange => 'UpdateTotal()' %></td>
+    </tr>
+  </tbody>
+</table>
+  <hr/>
+    <!--- se ve mejor?-->
+    <table><tr><td>
+     <%= f.label 'Total calculo' %><br>
+    <%= f.text_field :totalCalculo,:onload=>'UpdateTotal()',:readonly=>'true' %>€
+    </td>
+  <td>&nbsp;</td><td>&nbsp;</td>
+  <td>
+  <%= f.label :totalContado %><br>
+    <%= f.text_field :totalContado,:onchange=>'UpdateDesvio()' %>
+  </td>
+  <td>&nbsp;</td><td> <%= f.label  :desvio %>€<br>
+    <%= f.text_field :desvio,:readonly=>'true' %></td>
+  </tr>
+  </table>
+ <hr/>
+  
+  <%= f.submit 'Guardar',:class=>'btn btn-success'%>  
+<% end %>
+<script type="text/javascript">
+window.onload = function () {
+console.log('Empezamos');
+UpdateTotal();
+var doscientos = document.getElementById('caja_doscientos');
+console.log('Billetes de 200:'+ parseFloat(caja_doscientos.value));
+var cien = document.getElementById('caja_cien');
+var cincuenta = document.getElementById('caja_cincuenta');
+var totalCalculo = 0;
+UpdateTotal();
+};
+
+function UpdateTotal() {
+  console.log('Hola');
+    var totalCalculo = 
+      parseFloat(caja_doscientos.value)*200 + 
+      parseFloat(caja_cien.value)*100 + 
+      parseFloat(caja_cincuenta.value)*50+
+      parseFloat(caja_veinte.value)*20+
+      parseFloat(caja_diez.value)*10+
+      parseFloat(caja_cinco.value)*5+
+      parseFloat(caja_dos.value)*2+
+      parseFloat(caja_uno.value)*1+
+      parseFloat(caja_medio.value)*0.5+
+      parseFloat(caja_veintecentimos.value)*0.2+
+      parseFloat(caja_diezcentimos.value)*0.1+
+      parseFloat(caja_cincocentimos.value)*0.05;
+
+    console.log("Total: "+totalCalculo);
+   // var total = subtotal - parseFloat(DownPayment.value);
+   // var totalmonthlypayment = 0;
+
+    parseFloat(document.getElementById('caja_totalCalculo').value = totalCalculo);
+
+    var totalCalculo = parseFloat(document.getElementById("caja_totalCalculo")).value;
+}
+function UpdateDesvio(){
+  console.log('En desvio');
+  var totalCalculo = parseFloat(caja_totalCalculo.value);
+  var totalContado = parseFloat(caja_totalContado.value);
+  var desvio= totalCalculo-totalContado;
+  console.log("CALCULO  "+totalCalculo);
+  console.log("Contado  "+totalContado);
+  parseFloat(document.getElementById('caja_desvio').value = desvio);
+  console.log("Desvio "+desvio);
+}
+
+</script>
+

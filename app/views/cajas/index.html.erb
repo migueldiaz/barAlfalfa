@@ -1,0 +1,37 @@
+<h1>Listado de cajas</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Turno</th>
+      <th>Usuario</th>
+      <th>Totalcalculo</th>
+      <th>Totalcontado</th>
+      <th>Desvio</th>
+      <th>Fecha</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cajas.each do |caja| %>
+      <tr>
+        <td><%= caja.turno %></td>
+        <td><%= caja.usuario %></td>
+       
+        <td><%= caja.totalCalculo %> €</td>
+        <td><%= caja.totalContado %> €</td>
+        <td><%= caja.desvio %> €</td>
+        <td><%= caja.created_at %> </td>
+        <td><%= link_to 'Ver', caja ,:class=>'btn'%></td>
+        <td><%= link_to 'Editar', edit_caja_path(caja) ,:class=>'btn'%></td>
+        <td><%= link_to 'Eliminar', caja, method: :delete,:class=>'btn', data: { confirm: '¿Está seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo cierre de Caja', new_caja_path,:class=>'btn btn-large' %>

@@ -1,0 +1,24 @@
+class CreateCajas < ActiveRecord::Migration
+  def change
+    create_table :cajas do |t|
+      t.string :turno
+      t.string :usuario
+      t.decimal :doscientos
+      t.decimal :cien
+      t.decimal :cincuenta
+      t.decimal :veinte
+      t.decimal :diez
+      t.decimal :cinco
+      t.decimal :uno
+      t.decimal :medio
+      t.decimal :veintecentimos
+      t.decimal :diezcentimos
+      t.decimal :cincocentimos
+      t.string :totalCalculo
+      t.string :totalContado
+      t.string :desvio
+
+      t.timestamps
+    end
+  end
+end

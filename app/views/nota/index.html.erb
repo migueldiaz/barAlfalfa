@@ -1,0 +1,31 @@
+<h1>Listado de mensajes nota</h1>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Fecha/hora</th>
+      <th>Mensaje</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @nota.each do |notum| %>
+      <tr>
+        <td><%= notum.usuario %></td>
+        <td><%= notum.created_at %></td>
+        <td><%= notum.mensaje %></td>
+        <td><%= link_to 'Ver', notum ,:class=>'btn'%></td>
+        <td><%= link_to 'Editar', edit_notum_path(notum),:class=>'btn' %></td>
+        <td><%= link_to 'Borrar', notum, method: :delete,:class=>'btn', data: { confirm: 'Está seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo mensaje', new_notum_path,:class=>'btn'%>

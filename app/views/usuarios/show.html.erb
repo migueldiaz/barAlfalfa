@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @usuario.nombre %>
+</p>
+
+<%= link_to 'Editar', edit_usuario_path(@usuario),:class=>'btn' %> |
+<%= link_to 'Volver', usuarios_path,:class=>'btn' %>
